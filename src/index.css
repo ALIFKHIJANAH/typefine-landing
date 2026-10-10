@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  --color-ink: #0b0d12;
+  --color-muted: #5b616c;
+  --color-subtle: #868c97;
+  --color-line: #e5e7eb;
+  --color-line-strong: #d3d7de;
+  --color-surface: #f5f6f8;
+  --color-accent: #3b63e0;
+  --color-accent-soft: #7ea2ff;
+
+  /* Dark UI inside the product mockups */
+  --color-ui-text: #f4f7fc;
+  --color-ui-muted: #aeb9cb;
+  --color-ui-dim: #707680;
+  --color-ui-button: #4269d0;
+
+  /* Privacy band */
+  --color-night-text: #f3f4f6;
+  --color-night-muted: #a0a6b1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@utility hairline {
+  outline: 1px solid var(--color-line);
+  outline-offset: -0.5px;
+}
+
+@utility hairline-strong {
+  outline: 1px solid var(--color-line-strong);
+  outline-offset: -0.5px;
+}
+
+/* Frosted panel used across the macOS mockups */
+@utility glass-chip {
+  background: #182231b8;
+  outline: 1px solid #ffffff24;
+  outline-offset: -0.5px;
+  box-shadow: 0 12px 30px #00000044;
+  backdrop-filter: blur(9px);
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-inline: 20px;
+
+  @media (width >= 48rem) {
+    padding-inline: 48px;
+  }
+
+  @media (width >= 80rem) {
+    padding-inline: 120px;
+  }
+}
